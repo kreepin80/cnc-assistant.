@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101820"><meta name="description" content="CNC Assistant — справочник и личная база диагностики Siemens и Fanuc">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>CNC Assistant</title><link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="brand-mark">C</span><div><b>CNC ASSISTANT</b><small>FIELD SERVICE TOOLKIT</small></div></div><button id="installBtn" class="ghost hidden">Установить</button></header>
+<main>
+<section class="hero"><div class="eyebrow">ПОМOЩНИК ИНЖЕНЕРА</div><h1>Разберёмся<br><span>с ошибкой.</span></h1><p>Поиск, заметки и личная база неисправностей для ЧПУ.</p></section>
+<section class="filters panel"><div class="filter-line"><label>Производитель<select id="maker"><option value="all">Все</option><option>Siemens</option><option>Fanuc</option></select></label><label>Стойка<select id="control"><option value="all">Все модели</option></select></label></div>
+<div class="search"><span>⌕</span><input id="search" placeholder="Код, сообщение или ключевое слово…" autocomplete="off"><button id="clearSearch" aria-label="Очистить">×</button></div>
+<div class="chips"><button class="chip active" data-view="all">Все записи</button><button class="chip" data-view="favorites">Избранное</button><button class="chip" data-view="notes">Мои заметки</button></div></section>
+<section class="results-head"><b id="resultTitle">БАЗА ЗНАНИЙ</b><span id="count">0 записей</span></section>
+<section id="results" class="results"></section>
+<section class="panel add-panel"><div><b>Не нашёл нужную ошибку?</b><p>Добавь собственную запись в локальную базу.</p></div><button id="addBtn" class="primary">＋ Добавить</button></section>
+<footer>Данные сохраняются на этом устройстве · CNC Assistant MVP</footer>
+</main>
+<dialog id="entryDialog"><form method="dialog" id="entryForm"><div class="modal-head"><b id="dialogTitle">Новая запись</b><button class="icon-btn" value="cancel" aria-label="Закрыть">×</button></div>
+<input type="hidden" id="entryId"><label>Производитель<select id="entryMaker"><option>Siemens</option><option>Fanuc</option></select></label>
+<label>Модель стойки<input id="entryControl" placeholder="Например, SINUMERIK 828D" required></label>
+<label>Код ошибки<input id="entryCode" placeholder="Код / alarm number" required></label>
+<label>Заголовок<input id="entryTitle" placeholder="Краткое описание" required></label>
+<label>Описание и заметки<textarea id="entryBody" rows="5" placeholder="Наблюдения, проверки, решение…"></textarea></label>
+<div class="modal-actions"><button type="button" id="deleteEntry" class="danger hidden">Удалить</button><button value="cancel" class="ghost">Отмена</button><button id="saveEntry" class="primary" value="default">Сохранить</button></div>
+</form></dialog>
+<script src="./app.js"></script>
+</body></html>
